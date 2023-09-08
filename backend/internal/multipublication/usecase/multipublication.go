@@ -6,7 +6,7 @@ import (
   "context"
   "errors"
   "github.com/go-fed/activitypub"
-  "github.com/unmsmfisi-socialapplication/social_app/backend/internal/multipublication/application"
+  "github.com/unmsmfisi-socialapplication/social_app/internal/multipublication/application"
 )
 
 // MultipublicationApplication is the application for multipublication.
