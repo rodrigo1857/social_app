@@ -4,15 +4,15 @@ import (
   "os"
 )
 
-// MultipublicationConfig is the configuration for multipublication.
+// MultipublicationConfig is the configuration for multipublication
 type MultipublicationConfig struct {
-  // Networks is a list of configured social networks.
+  // Networks is a list of configured social networks
   Networks []string
-  // Tokens is a list of authorization tokens for the configured social networks.
+  // Tokens is a list of authorization tokens for the configured social networks
   Tokens []string
 }
 
-// LoadMultipublicationConfig loads the multipublication configuration from a file.
+// LoadMultipublicationConfig loads the multipublication configuration from a file
 func LoadMultipublicationConfig() (*MultipublicationConfig, error) {
   // Load the configuration from a file.
   config := &MultipublicationConfig{}
@@ -35,4 +35,3 @@ func LoadMultipublicationConfig() (*MultipublicationConfig, error) {
   }
 
   return config, nil
-}

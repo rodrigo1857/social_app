@@ -4,6 +4,7 @@ import (
   "fmt"
   "log"
   "net/http"
+
   "github.com/go-fed/activitypub"
   "github.com/unmsmfisi-socialapplication/social_app/internal/multipublication/application"
 )
@@ -15,14 +16,20 @@ func main() {
     log.Fatal(err)
   }
 
-  // Create a new ActivityPub client.
-  client := activitypub.NewClient(nil)
+  // Create a new HTTP server.
+  server := http.Server{
+    Addr: ":8080",
+  }
 
-  // Create a new multipublication application.
-  app := application.NewMultipublicationApplication(config, client)
+  // Create the multipublication handler.
+  handler := application.NewMultipublicationHandler(config)
 
   // Register the multipublication handler.
-  http.HandleFunc("/multipublication", app.Handle)
+  http.HandleFunc("/multipublication", handler.Handle)
 
-  // Start the server.
-  log.Fatal(http.ListenAndServe(":8
+  // Start the HTTP server.
+  err = server.ListenAndServe()
+  if err != nil {
+    log.Fatal(err)
+  }
+}

@@ -4,22 +4,21 @@ import (
   "context"
   "fmt"
   "net/http"
-
   "github.com/go-fed/activitypub"
   "github.com/unmsmfisi-socialapplication/social_app/internal/multipublication/application"
 )
 
-// MultipublicationHandler handles requests for multipublication.
+// MultipublicationHandler handles requests for multipublication
 type MultipublicationHandler struct {
   app *application.MultipublicationApplication
 }
 
-// NewMultipublicationHandler creates a new MultipublicationHandler.
+// NewMultipublicationHandler creates a new MultipublicationHandler
 func NewMultipublicationHandler(app *application.MultipublicationApplication) *MultipublicationHandler {
   return &MultipublicationHandler{app}
 }
 
-// Handle handles a request for multipublication.
+// Handle handles a request for multipublication
 func (h *MultipublicationHandler) Handle(w http.ResponseWriter, r *http.Request) {
   // Get the publication data.
   data := struct {
@@ -32,9 +31,9 @@ func (h *MultipublicationHandler) Handle(w http.ResponseWriter, r *http.Request)
     return
   }
 
-  // Publish the publication on the configured social networks.
+  // Publish the publication on the configured social networks
   h.app.Publish(context.Background(), data.Text)
 
-  // Return a successful response.
+  // Return a successful response
   w.WriteHeader(http.StatusOK)
 }
