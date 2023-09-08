@@ -1,6 +1,4 @@
-// file of controller
-
-package handler
+package infraestructure
 
 import (
   "context"

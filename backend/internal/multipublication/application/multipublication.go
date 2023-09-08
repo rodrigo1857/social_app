@@ -1,6 +1,4 @@
-// file of use
-
-package usecase
+package application
 
 import (
   "context"
